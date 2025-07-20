@@ -1,0 +1,63 @@
+In Kubernetes, **container hooks** refer to **lifecycle hooks** you can define in a Pod's container specification. These hooks allow you to execute custom actions **at specific points in the container’s lifecycle**—typically before it starts or before it terminates.
+
+---
+
+## 🔁 Kubernetes Container Lifecycle Hooks
+
+Kubernetes supports **two types of lifecycle hooks**:
+
+### 1. `postStart`
+
+* **When it runs**: Immediately **after the container is created** and the entrypoint starts.
+* **Use case**: Initialization logic like touching files, logging, waiting for a dependency, etc.
+
+### 2. `preStop`
+
+* **When it runs**: Just **before the container is terminated** (after a SIGTERM is sent, but before SIGKILL).
+* **Use case**: Graceful shutdown, draining connections, notifying external systems, etc.
+
+---
+
+## 🧱 Example: Lifecycle Hook YAML
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hook-demo
+spec:
+  containers:
+  - name: myapp
+    image: busybox
+    lifecycle:
+      postStart:
+        exec:
+          command: ["/bin/sh", "-c", "echo Hello from postStart! >> /var/log/hook.log"]
+      preStop:
+        exec:
+          command: ["/bin/sh", "-c", "echo Goodbye from preStop! >> /var/log/hook.log"]
+    command: ["/bin/sh", "-c", "sleep 3600"]
+```
+
+---
+
+## 🔧 Key Notes
+
+* Hooks **do not block** container startup or termination permanently:
+
+    * `postStart` runs **asynchronously** (in parallel with the container).
+    * `preStop` is **synchronous** and **must complete within the termination grace period** (default: 30s).
+* If a `postStart` hook fails, the container will be killed and restarted depending on `restartPolicy`.
+* Hooks can be used **only with the `exec` command**—you cannot use HTTP or TCP liveness/start probes in hooks.
+
+---
+
+## 🔍 Common Use Cases
+
+| Hook      | Use Case Examples                                             |
+| --------- | ------------------------------------------------------------- |
+| postStart | Populate initial data, wait for config, logging startup info  |
+| preStop   | Drain Node.js/Java/Nginx connections, flush logs, shutdown DB |
+
+---
+
