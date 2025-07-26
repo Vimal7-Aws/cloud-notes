@@ -49,7 +49,7 @@ An **ambassador** is a **proxy container** that acts as a **bridge** between the
 
 * API gateways for specific external services
 * Service discovery abstraction
-* Outbound mTLS handling
+* Inbound and Outbound mTLS handling
 * Circuit breaking, retries, timeouts
 * Transparent proxying for databases or APIs
 
