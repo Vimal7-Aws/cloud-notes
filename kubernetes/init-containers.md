@@ -89,4 +89,44 @@ kubectl describe pod init-demo
 
 ---
 
-Would you like an example integrated into a **Deployment** or **Helm chart** for production use?
+Yes, ✅ **init containers must complete successfully before the main container(s) start**.
+
+---
+
+## 🔄 How It Works:
+
+1. **Init containers run sequentially**, in the order they’re defined.
+2. Each must **exit with status `0`** (i.e., success).
+3. Only after all init containers finish, Kubernetes starts the **main app containers**.
+4. If any init container fails:
+
+   * Kubernetes retries it (with backoff),
+   * The main containers will **not start** until all init containers succeed.
+
+---
+
+## 🧠 Why is this behavior important?
+
+It ensures that your app only starts **after the environment is ready**, for example:
+
+* Wait for a dependency (e.g., DB, API) to be reachable
+* Run DB migrations
+* Extract config files or secrets
+* Copy binaries or set up shared volumes
+
+---
+
+## 🧪 Example
+
+```yaml
+initContainers:
+  - name: wait-for-db
+    image: busybox
+    command: ['sh', '-c', 'until nc -z db-service 5432; do echo waiting for db; sleep 2; done']
+```
+
+This container will **block the app** from starting until the database is reachable.
+
+---
+
+
