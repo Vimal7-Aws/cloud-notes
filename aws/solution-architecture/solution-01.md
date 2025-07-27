@@ -1,4 +1,14 @@
-To meet the company's **security and availability requirements** in the **most cost-effective way**, **this combination of steps is an excellent solution**:
+
+Overall explanation
+
+Amazon CloudFront comes with AWS Shield standard by default which will provide some protection against DDoS attacks. For malicious web attacks an AWS WAF ACL should be associated with the distribution so that it can protect against the attacks using an appropriate rule group.
+
+In this configuration it is important to ensure that the attacks cannot circumvent CloudFront and connect directly to the public ALB. For this, we can create a custom header and secret value in CloudFront. This will be forwarded in requests that originate from CloudFront. The ALB can conditionally forward only if this HTTP header information is present in the request.
+
+---
+
+
+<img width="719" height="403" alt="image" src="https://github.com/user-attachments/assets/ac16f62e-d7c8-4e6f-9db9-e29ca69e34ce" />
 
 ---
 
