@@ -1,9 +1,0 @@
-alb
-db
-iam
-kms
-nacl
-rds
-route53
-s3
-vpc

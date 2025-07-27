@@ -1,0 +1,17 @@
+Index: aws/A.java
+===================================================================
+diff --git a/aws/A.java b/aws/A.java
+deleted file mode 100644
+--- a/aws/A.java	(revision 7a11a60e7e7949ebe6fe252325b003d27238dc5b)
++++ /dev/null	(revision 7a11a60e7e7949ebe6fe252325b003d27238dc5b)
+@@ -1,9 +0,0 @@
+-alb
+-db
+-iam
+-kms
+-nacl
+-rds
+-route53
+-s3
+-vpc
+\ No newline at end of file
