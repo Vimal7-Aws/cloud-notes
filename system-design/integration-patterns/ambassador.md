@@ -1,3 +1,9 @@
+
+https://learn.microsoft.com/en-us/azure/architecture/patterns/ambassador
+
+
+
+<br/></br>
 <img width="803" height="285" alt="image" src="https://github.com/user-attachments/assets/b0560062-99d9-4b6b-81df-acd67cd1585c" />
 
 
