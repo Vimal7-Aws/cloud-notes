@@ -1,6 +1,15 @@
 
 ---
 
+<br/>
+<br/>
+
+
+<img width="673" height="398" alt="image" src="https://github.com/user-attachments/assets/b1979aa2-c317-4640-887d-209ff9dac527" />
+
+<br/><br/>
+
+
 # 🌟 Richardson Maturity Model (REST API Levels)
 
 The **Richardson Maturity Model** shows the progression of an API from a simple RPC style to a full RESTful API with hypermedia support.  
