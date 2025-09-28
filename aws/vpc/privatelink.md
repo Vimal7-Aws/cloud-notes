@@ -64,5 +64,3 @@ Think of it as:
 * **Gateway VPC Endpoint** = for S3/DynamoDB only (doesn’t use PrivateLink).
 
 ---
-
-Would you like me to draw a **diagram showing how a consumer VPC connects to a provider VPC through PrivateLink**? (It makes it very intuitive.)
