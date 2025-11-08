@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <style>
+      .nav-bar {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .nav-container {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .nav-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      .main-content h1, .main-content h2, .main-content h3 {
+        color: #333;
+      }
+      .main-content a {
+        color: #667eea;
+      }
+      .main-content a:hover {
+        color: #764ba2;
+      }
+      .footer {
+        margin-top: 3rem;
+        padding: 2rem 0;
+        border-top: 1px solid #eff0f1;
+        text-align: center;
+        color: #606c71;
+      }
+      @media screen and (max-width: 768px) {
+        .nav-container {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .nav-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <div class="nav-container">
+        <a href="{{ site.baseurl }}/" class="nav-brand">{{ site.title }}</a>
+        <div class="nav-links">
+          <a href="{{ site.baseurl }}/">Home</a>
+          <a href="{{ site.baseurl }}/aws/">AWS</a>
+          <a href="{{ site.baseurl }}/kubernetes/">Kubernetes</a>
+          <a href="{{ site.baseurl }}/docker/">Docker</a>
+          <a href="{{ site.baseurl }}/networking/">Networking</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="page-header">
+      <h1 class="project-name">{{ page.title | default: site.title }}</h1>
+      <h2 class="project-tagline">{{ page.description | default: site.description }}</h2>
+      {% if site.github.is_project_page %}
+        <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
+      {% endif %}
+    </section>
+
+    <section class="main-content">
+      {{ content }}
+
+      <footer class="footer">
+        <p>
+          {% if site.github.is_project_page %}
+            <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>
+          {% endif %}
+        </p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/pages-themes/cayman">Cayman</a></small></p>
+      </footer>
+    </section>
+  </body>
+</html>

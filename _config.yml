@@ -1,0 +1,48 @@
+# Site settings
+title: Cloud Notes
+description: Comprehensive guides on AWS, Kubernetes, Docker, and Networking
+baseurl: "/cloud-notes"
+url: "https://vimal7-aws.github.io"
+
+# Theme
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-relative-links
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: AWS
+    url: /aws/
+  - title: Kubernetes
+    url: /kubernetes/
+  - title: Docker
+    url: /docker/
+  - title: Networking
+    url: /networking/
+
+# Relative links
+relative_links:
+  enabled: true
+  collections: true
+
+# Markdown processing
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: shell
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - .git
+  - .gitignore
+  - .idea
+  - "*.iml"
+  - Gemfile
+  - Gemfile.lock
